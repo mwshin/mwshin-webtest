@@ -12,20 +12,6 @@ buildscript{
 	}
 }
 
-bootJar{
-
-	archiveBaseName = '-'
-	archiveFileName = '-.jar'
-	archiveVersion = "0.0.0"
-
-}
-    from {
-        configurations.compile.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
-    }
-}
-
 plugins {
 	id 'org.springframework.boot' version '2.2.2.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
@@ -61,6 +47,12 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+jar{
+	manifest{
+		attributes 'Main-class' : 'test.GradleTest'
+	}
 }
 
 
