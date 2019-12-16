@@ -12,17 +12,13 @@ buildscript{
 	}
 }
 
-jar {
+bootJar{
 
-    baseName = "homepage-batch"
-    version = "${buildVersion}"
-    manifest {
+	archiveBaseName = '-'
+	archiveFileName = '-.jar'
+	archiveVersion = "0.0.0"
 
-        attributes 'Title': 'Reqeust And Header Tester',
-                   'Version': 1.0,
-                   'Main-Class': 'com.mwshin.webservice.WebServiceApplication'
-    }
-
+}
     from {
         configurations.compile.collect {
             it.isDirectory() ? it : zipTree(it)
